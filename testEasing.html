@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+        var alphabet = '0abcdefghijklmnopqrstuvwxyz';
+
+        function enbase(x) {
+            var intX = Math.floor(x);
+            var n = alphabet.length;
+            if (intX < n) {
+                return alphabet[intX];
+            }
+
+            return enbase(intX / n) + alphabet[intX % n];
+        }
+
+        function debase(x) {
+            var n = alphabet.length;
+            var result = 0;
+            for (var ii = 0; ii < x.length; ii++) {
+                result += alphabet.indexOf(x[ii]) * Math.pow(n, ii);      
+            }
+            
+            return result;
+        }
+
+        function between(a, b, factor) {
+            var inStr;
+            var outStr;
+            var diff;
+            var distance;
+            if (a.length > b.length) {
+              diff = a.length - b.length;
+              distance = Math.floor(diff - diff * factor);
+              inStr = a.slice(0, b.length + distance).toLowerCase();
+              outStr = pad(b, b.length + distance).toLowerCase();
+            } else {
+              diff = b.length - a.length;
+              distance = Math.floor(diff * factor);
+              inStr = pad(a, a.length + distance).toLowerCase();
+              outStr = b.slice(0, a.length + distance).toLowerCase();
+            }
+            
+            return enbase(debase(inStr) * (1 - factor) + debase(outStr) * factor);
+        }
+
+        function pad(x, n) {
+            var p = alphabet[0].repeat(n - x.length); 
+            return '' + x + p;
+        }
+
+        console.log(between('She', 'I', 1));
+
+        for (let ii = 0; ii < 21; ii++) {
+            console.log(between('aa', 'zz', ii * 0.05));
+        }
+        console.log(between('aa', 'zz', 0.85)); //mz
+        console.log(between('aa', 'az', 0.5)); //m (equivalent to ma)
+        console.log(between('cat', 'doggie', 0.5)); //cumqec
+        console.log(between('google', 'microsoft', 0.5)); //jlilzyhcw
+        console.log(between('microsoft', 'google', 0.5)); //jlilzyhcw
+        console.log(enbase(debase('foo')) === 'foo');
+        </script>
+    </body>
+</html>
