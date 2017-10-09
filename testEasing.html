@@ -20,7 +20,7 @@
         function debase(x) {
             var n = alphabet.length;
             var result = 0;
-            for (var ii = 0; ii < x.length; ii++) {
+            for (var ii = 0; ii < x.length; ii += 1) {
                 result += alphabet.indexOf(x[ii]) * Math.pow(n, ii);      
             }
             
@@ -54,7 +54,7 @@
 
         console.log(between('She', 'I', 1));              /* i */
 
-        for (let ii = 0; ii < 21; ii++) {
+        for (let ii = 0; ii <= 20; ii += 1) {
             console.log(between('aa', 'zz', ii * 0.05));  /* aa, bi, cq... */
         }
 
