@@ -52,16 +52,17 @@
             return '' + x + p;
         }
 
-        console.log(between('She', 'I', 1));
+        console.log(between('She', 'I', 1));              /* i */
 
         for (let ii = 0; ii < 21; ii++) {
-            console.log(between('aa', 'zz', ii * 0.05));
+            console.log(between('aa', 'zz', ii * 0.05));  /* aa, bi, cq... */
         }
-        console.log(between('aa', 'zz', 0.85)); //mz
-        console.log(between('aa', 'az', 0.5)); //m (equivalent to ma)
-        console.log(between('cat', 'doggie', 0.5)); //cumqec
-        console.log(between('google', 'microsoft', 0.5)); //jlilzyhcw
-        console.log(between('microsoft', 'google', 0.5)); //jlilzyhcw
+
+        console.log(between('aa', 'zz', 0.85));           /* wb */
+        console.log(between('aa', 'az', 0.5));            /* mn */
+        console.log(between('cat', 'doggie', 0.5));       /* d0hc */
+        console.log(between('google', 'microsoft', 0.5)); /* gz0lvyw */
+        console.log(between('microsoft', 'google', 0.5)); /* gz0lvyw */
         console.log(enbase(debase('foo')) === 'foo');
         </script>
     </body>
